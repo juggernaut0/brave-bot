@@ -1,0 +1,3 @@
+CREATE USER bravebot WITH PASSWORD 'brave';
+CREATE DATABASE bravebot;
+GRANT ALL PRIVILEGES ON DATABASE bravebot TO bravebot;
