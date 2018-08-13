@@ -1,0 +1,10 @@
+token: ${DISCORD_API_TOKEN}
+data:
+  dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+  sqlDialect: POSTGRES
+
+  user: bravebot
+  password: brave
+  host: localhost
+  port: 5432
+  db: bravebot

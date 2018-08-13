@@ -1,0 +1,10 @@
+token: ${DISCORD_API_TOKEN}
+data:
+  dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+  sqlDialect: POSTGRES
+
+  user: ${DB_USER}
+  password: ${DB_PASS}
+  host: ${DB_HOST}
+  port: 5432
+  db: ${DB_NAME}
