@@ -1,20 +1,10 @@
-package bravebot
+package bravebot.listeners
 
 import bravebot.commands.Command
+import bravebot.debug
+import bravebot.getLogger
 import sx.blah.discord.api.events.IListener
-import sx.blah.discord.handle.impl.events.ReadyEvent
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent
-
-class ReadyListener : IListener<ReadyEvent> {
-    private val log = getLogger()
-
-    override fun handle(event: ReadyEvent) {
-        log.info {
-            val user = event.client.ourUser
-            "Logged in as ${user.name} (${user.stringID})"
-        }
-    }
-}
 
 class MessageReceivedListener(private val commands: List<Command> = emptyList()) : IListener<MessageReceivedEvent> {
     private val log = getLogger()
@@ -48,8 +38,8 @@ class MessageReceivedListener(private val commands: List<Command> = emptyList())
                     }
                 }
             } else if (cmd == "logout" && event.author.longID == 134231786682056704) {
-                event.client.logout()
-                return
+                event.client.dispatcher.dispatch(ShutdownEvent())
+                "Shutting down..."
             } else {
                 commands.find { it.canHandle(cmd) }?.execute(args, event.author, event.channel) ?: "Unknown command $cmd"
             }

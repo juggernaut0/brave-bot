@@ -1,5 +1,6 @@
 package bravebot.commands
 
+import bravebot.splitWhitespace
 import sx.blah.discord.handle.obj.IChannel
 import sx.blah.discord.handle.obj.IUser
 
@@ -18,5 +19,14 @@ abstract class BaseCommand(vararg cmdWords: String) : Command {
     protected fun makeHelpText(description: String): String {
         val cmds = if (cmdWords.size == 1) cmdWords.first() else cmdWords.joinToString("|", "[", "]")
         return "$cmds - $description"
+    }
+
+    protected fun extractSubcommand(args: String): Pair<String?, String> {
+        val parts = args.splitWhitespace(limit = 2)
+        return when(parts.size) {
+            1 -> parts[0] to ""
+            2 -> parts[0] to parts[1]
+            else -> null to ""
+        }
     }
 }

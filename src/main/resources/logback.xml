@@ -6,9 +6,9 @@
         </encoder>
     </appender>
 
-    <logger name="sx.blah.discord.Discord4J" level="INFO"/>
+    <logger name="bravebot" level="DEBUG"/>
 
-    <root level="debug">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
