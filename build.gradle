@@ -1,6 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.2.60'
     ext.pg_driver_version = '42.2.4'
+    ext.jackson_version = '2.9.6'
 
     repositories {
         mavenCentral()
@@ -33,6 +34,8 @@ dependencies {
     compile "org.postgresql:postgresql:$pg_driver_version"
     jooqRuntime "org.postgresql:postgresql:$pg_driver_version"
     compile 'com.zaxxer:HikariCP:3.2.0'
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jackson_version"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
@@ -41,7 +44,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 mainClassName = "bravebot.MainKt"
 run {
-    args = ["token.txt"]
+    args = ["config.yml"]
 }
 
 jooq {
