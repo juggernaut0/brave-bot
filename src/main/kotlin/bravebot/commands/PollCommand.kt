@@ -9,9 +9,11 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.ScheduledExecutorService
+import javax.inject.Inject
 
-class PollCommand(private val dao: PollDao,
-                  private val executor: ScheduledExecutorService
+class PollCommand @Inject constructor(
+        private val dao: PollDao,
+        private val executor: ScheduledExecutorService
 ) : BaseCommand("poll") {
     override val helpText = makeHelpText("Create polls and cast your vote")
 

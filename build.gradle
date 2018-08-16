@@ -37,6 +37,7 @@ dependencies {
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jackson_version"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
     compile "org.apache.commons:commons-text:1.4"
+    compile "com.google.inject:guice:4.2.0:no_aop"
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {

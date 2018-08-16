@@ -5,8 +5,11 @@ import bravebot.debug
 import bravebot.getLogger
 import sx.blah.discord.api.events.IListener
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent
+import javax.inject.Inject
 
-class MessageReceivedListener(private val commands: List<Command> = emptyList()) : IListener<MessageReceivedEvent> {
+class MessageReceivedListener @Inject constructor(
+        private val commands: MutableSet<Command> // must be mutable for guice multibinding
+) : IListener<MessageReceivedEvent> {
     private val log = getLogger()
 
     override fun handle(event: MessageReceivedEvent) {
