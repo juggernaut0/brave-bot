@@ -29,6 +29,7 @@ class BraveBotModule(private val config: BraveBotConfig) : AbstractModule() {
             addBindingTo<HelloCommand>()
             addBindingTo<MuricaCommand>()
             addBindingTo<PollCommand>()
+            addBindingTo<RollCommand>()
         }
     }
 
